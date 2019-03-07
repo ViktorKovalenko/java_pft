@@ -7,6 +7,6 @@ public class DistCalcRunner {
 
       Point p1 = new Point(3, 2);
       Point p2 = new Point(3, 5);
-        System.out.println( "Расстояние между двумя точками равно " + Point.distance(p1, p2));
+        System.out.println( "Расстояние между двумя точками равно " + p1.distance(p2));
     }
 }
