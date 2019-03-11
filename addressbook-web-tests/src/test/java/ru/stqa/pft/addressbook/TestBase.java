@@ -85,10 +85,10 @@ public class TestBase {
     }
 
     protected void deleteSelectedGroups() {
-      driver.findElement(By.name("delete")).click();
+      wd.findElement(By.name("delete")).click();
     }
 
     protected void selectGroup() {
-      driver.findElement(By.name("selected[]")).click();
+      wd.findElement(By.name("selected[]")).click();
     }
 }
