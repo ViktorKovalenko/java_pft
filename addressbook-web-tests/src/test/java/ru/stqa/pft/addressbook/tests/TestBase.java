@@ -6,6 +6,7 @@ import ru.stqa.pft.addressbook.appmanager.AplicationManager;
 
 public class TestBase {
 
+
     protected final AplicationManager app = new AplicationManager();
 
     @BeforeMethod(alwaysRun = true)
@@ -19,4 +20,7 @@ public class TestBase {
 
     }
 
+    public AplicationManager getApp() {
+        return app;
+    }
 }

@@ -32,11 +32,11 @@ public class ContactHelper extends HelperBase{
     }
 
     public void selectContact() {
-        click(By.id("3")) ;
+        click(By.name("selected[]"));
     }
 
     public void initContactModification() {
-        click(By.xpath("//tr[3]/td/input"));
+        click(By.xpath("(//img[@alt='Edit'])[2]"));
     }
 
     public void submitContactModification() {
