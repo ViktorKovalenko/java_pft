@@ -5,61 +5,72 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
-import ru.stqa.pft.addressbook.tests.TestBase;
 
-public class ContactHelper extends TestBase {
-
-    private final NavigationHelper navigationHelper;
+public class ContactHelper extends HelperBase {
 
     public ContactHelper(WebDriver wd) {
-        navigationHelper = new NavigationHelper(wd);
+        super (wd);
     }
 
     public void submitContactCreation() {
-        navigationHelper.click(By.name("submit"));
+        click(By.name("submit"));
     }
 
     public void fillContactForm(ContactData contactData, boolean creation) {
-        navigationHelper.type(By.name("firstname"), contactData.getName());
-        navigationHelper.type(By.name("lastname"), contactData.getSurname());
-        navigationHelper.type(By.name("home"), contactData.getPhone());
-        navigationHelper.type(By.name("email"), contactData.getEmail());
+        type(By.name("firstname"), contactData.getName());
+        type(By.name("lastname"), contactData.getSurname());
+        type(By.name("home"), contactData.getPhone());
+        type(By.name("email"), contactData.getEmail());
 
         if (creation) {
-            new Select(navigationHelper.wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+            new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
 
         } else {
-            Assert.assertFalse(navigationHelper.isElementPresent(By.name("new_group")));
+            Assert.assertFalse(isElementPresent(By.name("new_group")));
         }
 
     }
 
 
     public void initContactCreation() {
-        navigationHelper.click(By.linkText("add new"));
+        click(By.linkText("add new"));
     }
 
     public void selectContact() {
-        navigationHelper.click(By.name("selected[]"));
+        click(By.name("selected[]"));
     }
 
     public void initContactModification() {
-        navigationHelper.click(By.xpath("(//img[@alt='Edit'])[2]"));
+        click(By.xpath("//img[@alt='Edit']"));
     }
 
     public void submitContactModification() {
-        navigationHelper.click(By.name("update"));
+        click(By.name("update"));
     }
 
     public void submitContactDeletion() {
-        navigationHelper.wd.switchTo().alert().accept();
+        wd.switchTo().alert().accept();
     }
 
     public void initContactDeletion() {
-        navigationHelper.click(By.xpath("//input[@value = 'Delete']"));
+        click(By.xpath("//input[@value = 'Delete']"));
     }
 
-    public NavigationHelper getNavigationHelper() {
-        return navigationHelper;
+
+
+
+    public void createContact(ContactData contact) {
+        initContactCreation();
+        fillContactForm(contact, true);
+        submitContactCreation();
     }
+
+
+    public boolean isThereAContact() {
+        return isElementPresent(By.name("selected[]"));
+    }
+
+public void returnToHomePage(){
+    click(By.linkText("home page"));
+}
 }
