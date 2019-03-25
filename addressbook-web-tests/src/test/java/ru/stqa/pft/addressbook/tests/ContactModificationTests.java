@@ -13,7 +13,7 @@ public class ContactModificationTests extends TestBase{
            app.getContactHelper().createContact(new ContactData("Viktor", "Kovalenko", "+380993020583", "vsutogan@gmail.com", "test1"));
            app.getContactHelper().returnToHomePage(); //if app.timeouts().implicitlyWait is 0
        }
-        app.getContactHelper().initContactModification();
+        app.getContactHelper().initContactModification(before -1);
         app.getContactHelper().fillContactForm(new ContactData("Viktor", null, null, "vsutogan@gmail.com", null), false);
         app.getContactHelper().submitContactModification();
         app.getContactHelper().returnToHomePage();
