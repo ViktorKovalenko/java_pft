@@ -8,7 +8,7 @@ public class ContactModificationTests extends TestBase{
    @Test
     public void testContactModification(){
         app.getNavigationHelper().gotoHomepage();
-       int before = app.getGroupHelper().getGroupCount();
+       int before = app.getContactHelper().getContactCount();
        if (! app.getContactHelper().isThereAContact()){
            app.getContactHelper().createContact(new ContactData("Viktor", "Kovalenko", "+380993020583", "vsutogan@gmail.com", "test1"));
            app.getContactHelper().returnToHomePage(); //if app.timeouts().implicitlyWait is 0
@@ -16,7 +16,8 @@ public class ContactModificationTests extends TestBase{
         app.getContactHelper().initContactModification();
         app.getContactHelper().fillContactForm(new ContactData("Viktor", null, null, "vsutogan@gmail.com", null), false);
         app.getContactHelper().submitContactModification();
-       int after = app.getGroupHelper().getGroupCount();
+        app.getContactHelper().returnToHomePage();
+       int after = app.getContactHelper().getContactCount();
        Assert.assertEquals(after, before);
     }
 }
