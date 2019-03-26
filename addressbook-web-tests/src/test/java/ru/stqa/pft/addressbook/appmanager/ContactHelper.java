@@ -84,14 +84,14 @@ public void returnToHomePage(){
         return wd.findElements(By.name("selected[]")).size();
     }
 
-    public List<ContactData> getConactList() {
+    public List<ContactData> getContactList() {
         {
             List<ContactData> contacts = new ArrayList<ContactData>();
             List<WebElement> elements = wd.findElements(By.name("entry"));
             for (WebElement element : elements){
                 String name = element.getText();
                 String surname = element.getText();
-                String id = element.findElement(By.tagName("input")).getAttribute("value");
+                int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
                 ContactData contact = new ContactData(id, name, surname, null, null, null);
                 contacts.add(contact);
             }
