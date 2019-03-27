@@ -89,10 +89,10 @@ public void returnToHomePage(){
             List<ContactData> contacts = new ArrayList<ContactData>();
             List<WebElement> elements = wd.findElements(By.name("entry"));
             for (WebElement element : elements){
-                String name = element.findElement(By.xpath("//td[3]")).getText();
-                String surname = element.findElement(By.xpath("//td[2]")).getText();
+                String name = element.findElement(By.xpath(".//td[3]")).getText();
+                String surname = element.findElement(By.xpath(".//td[2]")).getText();
                 int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-                ContactData contact = new ContactData(id, name, surname, null, null, null);
+                ContactData contact = new ContactData(id, name, surname, "+380993020583", "vsutogan@gmail.com", "test1");
                 contacts.add(contact);
             }
             return contacts;
