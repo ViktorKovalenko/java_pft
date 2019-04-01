@@ -92,7 +92,7 @@ public void returnToHomePage(){
                 String name = element.findElement(By.xpath(".//td[3]")).getText();
                 String surname = element.findElement(By.xpath(".//td[2]")).getText();
                 int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-                ContactData contact = new ContactData(id, name, surname, "+380993020583", "vsutogan@gmail.com", "test1");
+                ContactData contact = new ContactData(id, name, surname);
                 contacts.add(contact);
             }
             return contacts;

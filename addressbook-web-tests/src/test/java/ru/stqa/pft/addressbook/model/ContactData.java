@@ -31,6 +31,15 @@ public class ContactData {
         this.group = group;
     }
 
+    public ContactData(int id, String name, String surname) {
+            this.id = Integer.MAX_VALUE;
+            this.name = name;
+            this.surname = surname;
+            this.phone = null;
+            this.email = null;
+            this.group = null;
+        }
+
     public String getName() {
         return name;
     }
