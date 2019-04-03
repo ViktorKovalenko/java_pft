@@ -8,10 +8,7 @@ import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
 
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class ContactHelper extends HelperBase {
 
@@ -53,10 +50,7 @@ public class ContactHelper extends HelperBase {
         //click(By.name("selected[]")); //случайный выбор
     }
 
-    public void initContactModification(int index) {
-        wd.findElements(By.xpath("//img[@alt='Edit']")).get(index).click();
-        // click(By.xpath("//img[@alt='Edit']")); // случайный выбор
-    }
+
     public void initContactModificationById(int id) {
         wd.findElement(By.xpath("//a[@href='edit.php?id="+id+"']")).click();
         // click(By.xpath("//img[@alt='Edit']")); // случайный выбор
@@ -75,67 +69,58 @@ public class ContactHelper extends HelperBase {
         click(By.xpath("//input[@value = 'Delete']"));
     }
 
-
+    public void returnToHomePage(){
+        click(By.linkText("home page"));
+    }
 
 
     public void create(ContactData contact) {
         initContactCreation();
         fillContactForm(contact, true);
         submitContactCreation();
+        contactCashe = null;
     }
     public void modify(ContactData contact) {
         initContactModificationById(contact.getId());
         fillContactForm(contact, false);
         submitContactModification();
+        contactCashe = null;
         returnToHomePage();
-    }
-    public void delete(int index) {
-        selectContact(index);
-        initContactDeletion();
-        submitContactDeletion();
     }
 
     public void delete(ContactData contact) {
         selectContactById(contact.getId());
         initContactDeletion();
         submitContactDeletion();
+        contactCashe = null;
     }
     public boolean isThereAContact() {
         return isElementPresent(By.name("selected[]"));
     }
 
-public void returnToHomePage(){
-    click(By.linkText("home page"));
-}
 
     public int getContactCount() {
         return wd.findElements(By.name("selected[]")).size();
     }
 
-    public List<ContactData> list() {
-            List<ContactData> contacts = new ArrayList<ContactData>();
-            List<WebElement> elements = wd.findElements(By.name("entry"));
-            for (WebElement element : elements){
-                String name = element.findElement(By.xpath(".//td[3]")).getText();
-                String surname = element.findElement(By.xpath(".//td[2]")).getText();
-                int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-                ContactData contact = new ContactData().withId(id).withName(name).withSurname(surname);
-                contacts.add(contact);
-            }
-            return contacts;
-        }
+
+
+    private Contacts contactCashe = null;
 
     public Contacts all() {
-        Contacts contacts = new Contacts();
+        if (contactCashe != null){
+            return new Contacts(contactCashe);
+        }
+        contactCashe = new Contacts();
         List<WebElement> elements = wd.findElements(By.name("entry"));
         for (WebElement element : elements){
             String name = element.findElement(By.xpath(".//td[3]")).getText();
             String surname = element.findElement(By.xpath(".//td[2]")).getText();
             int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
             ContactData contact = new ContactData().withId(id).withName(name).withSurname(surname);
-            contacts.add(contact);
+            contactCashe.add(contact);
         }
-        return contacts;
+        return new Contacts(contactCashe);
     }
 
 
