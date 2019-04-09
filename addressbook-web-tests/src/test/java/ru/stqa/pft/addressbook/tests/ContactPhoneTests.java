@@ -29,7 +29,7 @@ public class ContactPhoneTests extends TestBase {
         app.goTo().homepage();
         ContactData contact = app.contact().allPhonz().iterator().next();
         ContactData contact1 = app.contact().allEmails().iterator().next();
-        ContactData contact2 = app.contact().AddressFromHomePage().iterator().next();
+        ContactData contact2 = app.contact().addressFromHomePage().iterator().next();
         ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
 
         assertThat(contact.getAllPhones(),  equalTo(mergePhones(contactInfoFromEditForm)));
