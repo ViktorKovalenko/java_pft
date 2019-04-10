@@ -1,0 +1,23 @@
+[
+  {
+    "name": "Viktor 0",
+    "surname": "Kovalenko 0",
+    "phone": "5556",
+    "email": "test@mail.com",
+    "group": "test1"
+  },
+  {
+    "name": "Viktor 1",
+    "surname": "Kovalenko 1",
+    "phone": "5556",
+    "email": "test@mail.com",
+    "group": "test1"
+  },
+  {
+    "name": "Viktor 2",
+    "surname": "Kovalenko 2",
+    "phone": "5556",
+    "email": "test@mail.com",
+    "group": "test1"
+  }
+]
