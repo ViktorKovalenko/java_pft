@@ -1,5 +1,6 @@
 package ru.stqa.pft.addressbook.tests;
 
+import org.openqa.selenium.remote.BrowserType;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import ru.stqa.pft.addressbook.appmanager.AplicationManager;
@@ -9,7 +10,8 @@ import static org.openqa.selenium.remote.BrowserType.CHROME;
 public class TestBase {
 
 
-    protected static final AplicationManager app = new AplicationManager(CHROME);
+    protected static final AplicationManager app
+            = new AplicationManager(System.getProperty("browser", CHROME));
 
     @BeforeSuite(alwaysRun = true)
     public void setUp() throws Exception {
