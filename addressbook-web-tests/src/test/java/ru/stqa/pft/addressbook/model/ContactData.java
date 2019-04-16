@@ -3,46 +3,85 @@ package ru.stqa.pft.addressbook.model;
 import com.google.gson.annotations.Expose;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
+import org.hibernate.annotations.Type;
 
+import javax.persistence.*;
 import java.io.File;
+
+
+import java.sql.Timestamp;
 import java.util.Objects;
 @XStreamAlias("contact")
+@Entity
+@Table(name = "addressbook")
 public class ContactData {
+    @Column(name = "deprecated")
+    private Timestamp deprecated;
+
     @Expose
+    @Column(name = "firstname")
+
     private  String name;
     @Expose
+    @Column(name = "lastname")
+
     private  String surname;
     @Expose
+    @Transient
     private  String phone;
     @Expose
+    @Transient
     private  String email;
     @XStreamOmitField
+    @Id
+    @Column(name = "id")
     private int id = Integer.MAX_VALUE;
     @Expose
+    @Transient
     private String group;
     @Expose
+    @Column(name = "home")
+    @Type(type = "text")
     private String homePhone;
     @Expose
+    @Column(name = "mobile")
+    @Type(type = "text")
     private String mobilePhone;
     @Expose
+    @Column(name = "work")
+    @Type(type = "text")
     private String workPhone;
+    @Transient
     private String allPhones;
     @Expose
+    @Transient
     private String email2;
     @Expose
+    @Transient
     private String email3;
     @Expose
+    @Transient
     private String address;
+    @Transient
     private String allEmails;
+    @Transient
     private String addressFromHomePage;
     @Expose
-    private File photo;
+    @Transient
+    @Column(name = "photo")
+    @Type(type = "text")
+    private String photo;
 
 
 
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(deprecated, name, surname, phone, email, id, group, homePhone, mobilePhone, workPhone, allPhones, email2, email3, address, allEmails, addressFromHomePage, photo);
+    }
 
     public File getPhoto() {
-        return photo;
+        return new File(photo);
     }
 
     public String getAddressFromHomePage() {
@@ -116,7 +155,7 @@ public class ContactData {
     }
 
     public ContactData withPhoto(File photo) {
-        this.photo = photo;
+        this.photo = photo.getPath();
         return this;
     }
 
@@ -195,30 +234,6 @@ public class ContactData {
     }
 
 
-
-
-
-
-
-
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        ContactData that = (ContactData) o;
-        return id == that.id &&
-                Objects.equals(name, that.name) &&
-                Objects.equals(surname, that.surname);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(name, surname, id);
-    }
-
-
-
     @Override
     public String toString() {
         return "ContactData{" +
@@ -227,6 +242,28 @@ public class ContactData {
                 ", id='" + id + '\'' +
                 '}';
     }
-
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ContactData that = (ContactData) o;
+        return id == that.id &&
+                Objects.equals(deprecated, that.deprecated) &&
+                Objects.equals(name, that.name) &&
+                Objects.equals(surname, that.surname) &&
+                Objects.equals(phone, that.phone) &&
+                Objects.equals(email, that.email) &&
+                Objects.equals(group, that.group) &&
+                Objects.equals(homePhone, that.homePhone) &&
+                Objects.equals(mobilePhone, that.mobilePhone) &&
+                Objects.equals(workPhone, that.workPhone) &&
+                Objects.equals(allPhones, that.allPhones) &&
+                Objects.equals(email2, that.email2) &&
+                Objects.equals(email3, that.email3) &&
+                Objects.equals(address, that.address) &&
+                Objects.equals(allEmails, that.allEmails) &&
+                Objects.equals(addressFromHomePage, that.addressFromHomePage) &&
+                Objects.equals(photo, that.photo);
+    }
 }
 

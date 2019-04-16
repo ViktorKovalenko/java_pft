@@ -18,6 +18,7 @@
     "surname": "Kovalenko 2",
     "phone": "5556",
     "email": "test@mail.com",
-    "group": "test1"
+    "group": "test1",
+    "photo": "src/test/resources/img.png"
   }
 ]

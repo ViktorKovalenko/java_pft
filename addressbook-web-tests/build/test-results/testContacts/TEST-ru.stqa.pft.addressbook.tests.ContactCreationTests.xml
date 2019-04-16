@@ -1,10 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ru.stqa.pft.addressbook.tests.ContactCreationTests" tests="3" skipped="0" failures="0" errors="0" timestamp="2019-04-10T18:23:32" hostname="home" time="13.145">
+<testsuite name="ru.stqa.pft.addressbook.tests.ContactCreationTests" tests="3" skipped="0" failures="0" errors="0" timestamp="2019-04-11T09:19:47" hostname="home" time="18.32">
   <properties/>
-  <testcase name="testContactCreation[0](ContactData{name='Viktor 0', surname='Kovalenko 0', id='0'})" classname="ru.stqa.pft.addressbook.tests.ContactCreationTests" time="4.981"/>
-  <testcase name="testContactCreation[1](ContactData{name='Viktor 1', surname='Kovalenko 1', id='0'})" classname="ru.stqa.pft.addressbook.tests.ContactCreationTests" time="4.095"/>
-  <testcase name="testContactCreation[2](ContactData{name='Viktor 2', surname='Kovalenko 2', id='0'})" classname="ru.stqa.pft.addressbook.tests.ContactCreationTests" time="4.065"/>
-  <system-out><![CDATA[]]></system-out>
+  <testcase name="testContactCreation[0](ContactData{name='Viktor 0', surname='Kovalenko 0', id='0'})" classname="ru.stqa.pft.addressbook.tests.ContactCreationTests" time="10.247"/>
+  <testcase name="testContactCreation[1](ContactData{name='Viktor 1', surname='Kovalenko 1', id='0'})" classname="ru.stqa.pft.addressbook.tests.ContactCreationTests" time="4.039"/>
+  <testcase name="testContactCreation[2](ContactData{name='Viktor 2', surname='Kovalenko 2', id='0'})" classname="ru.stqa.pft.addressbook.tests.ContactCreationTests" time="4.028"/>
+  <system-out><![CDATA[12:19:47.161 [Test worker] INFO  r.s.pft.addressbook.tests.TestBase - Start test testContactCreationwith parameters[ContactData{name='Viktor 0', surname='Kovalenko 0', id='0'}]
+12:19:57.415 [Test worker] INFO  r.s.pft.addressbook.tests.TestBase - Stop test testContactCreation
+12:19:57.416 [Test worker] INFO  r.s.pft.addressbook.tests.TestBase - Start test testContactCreationwith parameters[ContactData{name='Viktor 1', surname='Kovalenko 1', id='0'}]
+12:20:01.455 [Test worker] INFO  r.s.pft.addressbook.tests.TestBase - Stop test testContactCreation
+12:20:01.457 [Test worker] INFO  r.s.pft.addressbook.tests.TestBase - Start test testContactCreationwith parameters[ContactData{name='Viktor 2', surname='Kovalenko 2', id='0'}]
+12:20:05.485 [Test worker] INFO  r.s.pft.addressbook.tests.TestBase - Stop test testContactCreation
+]]></system-out>
   <system-err><![CDATA[Security framework of XStream not initialized, XStream is probably vulnerable.
+console.error: BroadcastService: 
+  receivedBroadcastMessage: handler for
+  remote-settings/monitor_changes
+  threw error:
+  Message: Error: Polling for changes failed: NetworkError when attempting to fetch resource..
+  Stack:
+    remoteSettingsFunction/remoteSettings.pollChanges@resource://services-settings/remote-settings.js:188:13
+
 ]]></system-err>
 </testsuite>
