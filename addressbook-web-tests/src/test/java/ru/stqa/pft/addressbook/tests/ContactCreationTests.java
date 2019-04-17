@@ -60,7 +60,7 @@ public class ContactCreationTests extends TestBase {
     }
 
 
-    @Test (dataProvider = "validContactsFromJson")
+    @Test (dataProvider = "validContactsFromXml")
     public void testContactCreation(ContactData contact) throws Exception {
         app.goTo().homepage();
         Contacts before = app.db().contacts();
@@ -70,7 +70,7 @@ public class ContactCreationTests extends TestBase {
         assertThat(app.contact().count(), equalTo(before.size() + 1));
         Contacts after = app.db().contacts();
         assertThat(after, equalTo(
-                before.withAdded(contact.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));
+                before.withAdded(contact.withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt()))));
     }
 
     @Test (enabled = false) //проверка на наличие файла

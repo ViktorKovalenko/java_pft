@@ -2,22 +2,10 @@
   <contact>
     <name>Viktor 0</name>
     <surname>Kovalenko 0</surname>
-    <phone>5556</phone>
     <email>test@mail.com</email>
-    <group>test1</group>
-  </contact>
-  <contact>
-    <name>Viktor 1</name>
-    <surname>Kovalenko 1</surname>
-    <phone>5556</phone>
-    <email>test@mail.com</email>
-    <group>test1</group>
-  </contact>
-  <contact>
-    <name>Viktor 2</name>
-    <surname>Kovalenko 2</surname>
-    <phone>5556</phone>
-    <email>test@mail.com</email>
-    <group>test1</group>
+    <homePhone>5556</homePhone>
+    <mobilePhone>222</mobilePhone>
+    <workPhone>1111</workPhone>
+    <photo>src\test\resources\img.png</photo>
   </contact>
 </list>

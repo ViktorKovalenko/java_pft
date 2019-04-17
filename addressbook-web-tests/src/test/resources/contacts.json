@@ -1,24 +1,22 @@
-[
+ [
   {
     "name": "Viktor 0",
     "surname": "Kovalenko 0",
-    "phone": "5556",
     "email": "test@mail.com",
-    "group": "test1"
+    "group": "test1",
+    "homePhone": "5556",
+    "mobilePhone": "222",
+    "workPhone": "1111",
+    "photo": "src/test/resources/img.png",
   },
   {
     "name": "Viktor 1",
     "surname": "Kovalenko 1",
-    "phone": "5556",
-    "email": "test@mail.com",
-    "group": "test1"
-  },
-  {
-    "name": "Viktor 2",
-    "surname": "Kovalenko 2",
-    "phone": "5556",
     "email": "test@mail.com",
     "group": "test1",
-    "photo": "src/test/resources/img.png"
+    "homePhone": "5556",
+    "mobilePhone": "222",
+    "workPhone": "1111",
+    "photo": "src/test/resources/img.png",
   }
 ]

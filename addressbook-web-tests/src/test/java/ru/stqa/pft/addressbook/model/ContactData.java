@@ -30,12 +30,13 @@ public class ContactData {
     @Transient
     private  String phone;
     @Expose
-    @Transient
+    @Column(name = "email")
+    @Type(type = "text")
     private  String email;
     @XStreamOmitField
     @Id
     @Column(name = "id")
-    private int id = Integer.MAX_VALUE;
+    private int id;
     @Expose
     @Transient
     private String group;
@@ -67,7 +68,6 @@ public class ContactData {
     @Transient
     private String addressFromHomePage;
     @Expose
-    @Transient
     @Column(name = "photo")
     @Type(type = "text")
     private String photo;
@@ -75,10 +75,6 @@ public class ContactData {
 
 
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(deprecated, name, surname, phone, email, id, group, homePhone, mobilePhone, workPhone, allPhones, email2, email3, address, allEmails, addressFromHomePage, photo);
-    }
 
     public File getPhoto() {
         return new File(photo);
@@ -242,6 +238,12 @@ public class ContactData {
                 ", id='" + id + '\'' +
                 '}';
     }
+
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(deprecated, name, surname, phone, email, id, group, homePhone, mobilePhone, workPhone, allPhones, email2, email3, address, allEmails, addressFromHomePage, photo);
+    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -253,7 +255,6 @@ public class ContactData {
                 Objects.equals(surname, that.surname) &&
                 Objects.equals(phone, that.phone) &&
                 Objects.equals(email, that.email) &&
-                Objects.equals(group, that.group) &&
                 Objects.equals(homePhone, that.homePhone) &&
                 Objects.equals(mobilePhone, that.mobilePhone) &&
                 Objects.equals(workPhone, that.workPhone) &&
@@ -262,8 +263,7 @@ public class ContactData {
                 Objects.equals(email3, that.email3) &&
                 Objects.equals(address, that.address) &&
                 Objects.equals(allEmails, that.allEmails) &&
-                Objects.equals(addressFromHomePage, that.addressFromHomePage) &&
-                Objects.equals(photo, that.photo);
+                Objects.equals(addressFromHomePage, that.addressFromHomePage);
     }
 }
 
