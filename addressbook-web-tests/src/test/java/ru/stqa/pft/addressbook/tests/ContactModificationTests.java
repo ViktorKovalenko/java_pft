@@ -30,7 +30,7 @@ public class ContactModificationTests extends TestBase{
            ContactData modifiedContact = before.iterator().next();
            File photo = new File("src/test/resources/img.png");
            ContactData contact = new ContactData()
-                   .withId(modifiedContact.getId()).withName("Viktor").withSurname("Kovalenko").withWorkPhone("123").withEmail("vsutogan@gmail.com").withPhoto(photo);
+                   .withId(modifiedContact.getId()).withName("Vik").withSurname("Kov").withWorkPhone("123").withHomePhone("555").withMobilePhone("367").withEmail("vsutogan@gmail.com").withPhoto(photo);
            app.contact().modify(contact);
            assertThat(app.contact().count(), equalTo(before.size()));
            Contacts after = app.db().contacts();

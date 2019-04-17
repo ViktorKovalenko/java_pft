@@ -242,7 +242,7 @@ public class ContactData {
 
     @Override
     public int hashCode() {
-        return Objects.hash(deprecated, name, surname, phone, email, id, group, homePhone, mobilePhone, workPhone, allPhones, email2, email3, address, allEmails, addressFromHomePage, photo);
+        return Objects.hash(deprecated, name, surname, phone, email, id, homePhone, mobilePhone, workPhone, allPhones, email2, email3, address, allEmails, addressFromHomePage);
     }
     @Override
     public boolean equals(Object o) {
