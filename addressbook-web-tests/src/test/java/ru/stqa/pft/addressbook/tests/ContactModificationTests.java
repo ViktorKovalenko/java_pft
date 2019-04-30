@@ -19,7 +19,7 @@ public class ContactModificationTests extends TestBase{
         if (app.db().contacts().size()==0) {
             File photo = new File("src/test/resources/img.png");
             app.contact().create(new ContactData()
-                    .withName("Viktor").withSurname("Kovalenko").withPhone("+380993020583").withEmail("vsutogan@gmail.com").withPhoto(photo).withGroup("test1"));
+                    .withName("Viktor").withSurname("Kovalenko").withPhone("+380993020583").withEmail("vsutogan@gmail.com").withPhoto(photo));
             app.contact().returnToHomePage(); //if app.timeouts().implicitlyWait is 0
         }
     }

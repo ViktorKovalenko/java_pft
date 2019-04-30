@@ -7,10 +7,11 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.io.File;
-
-
 import java.sql.Timestamp;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
+
 @XStreamAlias("contact")
 @Entity
 @Table(name = "addressbook")
@@ -29,6 +30,7 @@ public class ContactData {
     @Expose
     @Transient
     private  String phone;
+    @Transient
     @Expose
     @Column(name = "email")
     @Type(type = "text")
@@ -37,17 +39,17 @@ public class ContactData {
     @Id
     @Column(name = "id")
     private int id;
-    @Expose
     @Transient
-    private String group;
     @Expose
     @Column(name = "home")
     @Type(type = "text")
     private String homePhone;
+    @Transient
     @Expose
     @Column(name = "mobile")
     @Type(type = "text")
     private String mobilePhone;
+    @Transient
     @Expose
     @Column(name = "work")
     @Type(type = "text")
@@ -68,9 +70,14 @@ public class ContactData {
     @Transient
     private String addressFromHomePage;
     @Expose
+    @Transient
     @Column(name = "photo")
     @Type(type = "text")
     private String photo;
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "address_in_groups",
+            joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name = "group_id"))
+    private Set<GroupData> groups = new HashSet<GroupData>();
 
 
 
@@ -109,6 +116,8 @@ public class ContactData {
         return name;
     }
 
+    public Groups getGroups() { return new Groups(groups);
+    }
 
 
     public String getSurname() {
@@ -126,13 +135,6 @@ public class ContactData {
     public String getEmail() {
         return email;
     }
-
-
-
-    public String getGroup() {
-        return group;
-    }
-
 
 
     public String getHomePhone() {
@@ -206,10 +208,7 @@ public class ContactData {
         return this;
     }
 
-    public ContactData withGroup(String group) {
-        this.group = group;
-        return this;
-    }
+
     public ContactData withHomePhone(String homePhone) {
         this.homePhone = homePhone;
         return this;
@@ -242,7 +241,7 @@ public class ContactData {
 
     @Override
     public int hashCode() {
-        return Objects.hash(deprecated, name, surname, phone, email, id, homePhone, mobilePhone, workPhone, allPhones, email2, email3, address, allEmails, addressFromHomePage);
+        return Objects.hash(name, surname,id);
     }
     @Override
     public boolean equals(Object o) {
@@ -250,20 +249,17 @@ public class ContactData {
         if (o == null || getClass() != o.getClass()) return false;
         ContactData that = (ContactData) o;
         return id == that.id &&
-                Objects.equals(deprecated, that.deprecated) &&
                 Objects.equals(name, that.name) &&
-                Objects.equals(surname, that.surname) &&
-                Objects.equals(phone, that.phone) &&
-                Objects.equals(email, that.email) &&
-                Objects.equals(homePhone, that.homePhone) &&
-                Objects.equals(mobilePhone, that.mobilePhone) &&
-                Objects.equals(workPhone, that.workPhone) &&
-                Objects.equals(allPhones, that.allPhones) &&
-                Objects.equals(email2, that.email2) &&
-                Objects.equals(email3, that.email3) &&
-                Objects.equals(address, that.address) &&
-                Objects.equals(allEmails, that.allEmails) &&
-                Objects.equals(addressFromHomePage, that.addressFromHomePage);
+                Objects.equals(surname, that.surname);
+
+
+
+    }
+
+    public ContactData ingroup(GroupData group) {
+        groups.add(group);
+        return this;
+
     }
 }
 
