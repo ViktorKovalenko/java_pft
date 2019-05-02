@@ -22,10 +22,12 @@ public class AplicationManager {
     private String browser;
     private DbHelper dbHelper;
 
+
     public AplicationManager(String browser) {
         this.browser = browser;
         properties = new Properties();
     }
+
 
 
     public void init() throws IOException {
