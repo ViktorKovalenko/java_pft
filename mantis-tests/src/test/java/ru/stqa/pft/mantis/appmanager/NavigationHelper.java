@@ -19,6 +19,9 @@ public class NavigationHelper extends HelperBase {
     public void manageUsersPage() {
         click(By.linkText("Manage"));
     }
+    public void userManage(){
+        click(By.linkText("Manage Users"));
+    }
 
     public void UserPage(int id) {
         click(By.cssSelector("a[href=\"manage_user_edit_page.php?user_id=" + id +"\"]"));

@@ -42,6 +42,9 @@ public class ApplicationManager {
         return ftp;
     }
     public DbHelper db(){
+        if (dbHelper == null){
+            dbHelper = new DbHelper(this);
+        }
         return dbHelper;}
     public MailHelper mail(){
         if (mailHelper == null){

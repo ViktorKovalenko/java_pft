@@ -1,6 +1,7 @@
-/*package ru.stqa.pft.mantis.tests;
+package ru.stqa.pft.mantis.tests;
 
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -12,9 +13,11 @@ import java.util.List;
 
 
 public class HbConnectionTest {
+    private SessionFactory sessionFactory;
+
     @BeforeClass
     protected void setUp() throws Exception {
-        // A SessionFactory is set up once for an application!
+//         A SessionFactory is set up once for an application!
         final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
                 .configure() // configures settings from hibernate.cfg.xml
                 .build();
@@ -30,18 +33,17 @@ public class HbConnectionTest {
     }
 
     @Test
-    public void testHbConnection(){
+    public void testHbConnection() {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        List<UserData> result = session.createQuery( "from GroupData" ).list();
+        List<UserData> result = session.createQuery("from UserData").list();
+        for (UserData user : result) {
+            System.out.println(user);
+            System.out.println(user.getId());
+        }
 
         session.getTransaction().commit();
         session.close();
 
-        for ( UserData user :  result ) {
-            System.out.println();
-            System.out.println(user.getId());
-        }
     }
 }
-*/

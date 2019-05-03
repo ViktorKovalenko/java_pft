@@ -4,7 +4,6 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.lanwen.verbalregex.VerbalExpression;
-import ru.stqa.pft.mantis.appmanager.HttpSession;
 import ru.stqa.pft.mantis.model.MailMessage;
 import ru.stqa.pft.mantis.model.UserData;
 
@@ -24,28 +23,25 @@ public class PasswordChangeTests extends TestBase {
 
     @Test
     public void testPasswordChange() throws IOException, MessagingException {
+
+
+        String newpasswd = "newpass";
         String username = "administrator";
         String password = "root";
-        String newpasswd = "newpass";
+
         app.goTo().loginPage();
         app.user().login(username, password);
         app.goTo().manageUsersPage();
-
+        app.goTo().userManage();
         UserData userChangedPass = app.user().getUserFromDb();
         app.goTo().UserPage(userChangedPass.getId());
         app.user().resetPassword();
-        List<MailMessage> mailMessages = app.mail().waitForMail(2, 10000);
+
+        List<MailMessage> mailMessages = app.mail().waitForMail(1, 10000);
         String confirmationLink = findConfirmationLink(mailMessages, userChangedPass.getEmail());
-
         app.registration().finish(confirmationLink, newpasswd);
-
-        UserData users = app.user().getUserFromDbById(userChangedPass.getId());
-
-        HttpSession session = app.newSession();
-        assertTrue(session.login(userChangedPass.getUsername(), newpasswd));
-        assertTrue(session.isLoggedInAs(users.getUsername()));
+        assertTrue(app.newSession().login(userChangedPass.getUsername(),newpasswd));
     }
-
 
 
 
@@ -57,8 +53,7 @@ public class PasswordChangeTests extends TestBase {
         return regex.getText(mailMessage.text);
     }
 
-
-    @AfterMethod(alwaysRun = true)
+    @AfterMethod (alwaysRun = true)
 
     public void stopMailServer() {
         app.mail().stop();

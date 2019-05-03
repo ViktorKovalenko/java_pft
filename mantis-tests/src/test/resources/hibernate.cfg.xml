@@ -15,7 +15,7 @@
 
         <!-- Database connection settings -->
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="connection.url"> jdbc:mysql://localhost/bugtracker</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/bugtracker?serverTimezone=UTC&amp;zeroDateTimeBehavior=convertToNull</property>
         <property name="connection.username">root</property>
         <property name="connection.password"></property>
 
@@ -23,7 +23,7 @@
         <property name="connection.pool_size">1</property>
 
         <!-- SQL dialect -->
-        <property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>
+        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
 
         <!-- Disable the second-level cache  -->
         <property name="cache.provider_class">org.hibernate.cache.internal.NoCachingRegionFactory</property>
@@ -37,7 +37,7 @@
         <!-- Names the annotated entity class -->
         <mapping class="ru.stqa.pft.mantis.model.UserData"/>
 
-
     </session-factory>
+
 
 </hibernate-configuration>

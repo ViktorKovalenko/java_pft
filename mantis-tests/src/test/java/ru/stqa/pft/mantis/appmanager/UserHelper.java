@@ -25,12 +25,9 @@ public class UserHelper extends HelperBase{
     }
 
     public UserData getUserFromDb() {
-        Users users = app.db().getUsersFromBD();
-        return users.stream().filter((u) -> u.getAccessLevel() != 90).iterator().next();
+        Users users = app.db().users();
+        return users.stream().filter((u) ->u.getId()  != 1).iterator().next();
     }
-    public UserData getUserFromDbById(int id){
-        Users users = app.db().getUsersFromBD();
-        return users.stream().filter((u) -> u.getId() == id).findFirst().get();
-    }
+
 
 }
