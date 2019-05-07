@@ -23,12 +23,12 @@ public class AplicationManager {
     private DbHelper dbHelper;
 
 
+
+
     public AplicationManager(String browser) {
         this.browser = browser;
         properties = new Properties();
     }
-
-
 
     public void init() throws IOException {
         String target = System.getProperty("target", "local");
@@ -52,6 +52,7 @@ public class AplicationManager {
         sessionHelper.login(properties.getProperty("web.adminLogin"),properties.getProperty("web.adminPassword") );
 
     }
+
 
 
     public void stop() {

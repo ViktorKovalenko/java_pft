@@ -29,6 +29,7 @@ public class ApplicationManager {
     private UserHelper userHelper;
     private DbHelper dbHelper;
     private SoapHelper soapHelper;
+    private BugTrackerHelper bugTrackerHelper;
 
 
     public ApplicationManager(String browser) {
@@ -41,6 +42,12 @@ public class ApplicationManager {
             ftp = new FtpHelper(this);
         }
         return ftp;
+    }
+    public BugTrackerHelper bug(){
+        if(bugTrackerHelper == null){
+            bugTrackerHelper = new BugTrackerHelper(this);
+        }
+        return bugTrackerHelper;
     }
     public DbHelper db(){
         if (dbHelper == null){

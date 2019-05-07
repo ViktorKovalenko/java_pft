@@ -13,7 +13,7 @@ public class LoginTests extends TestBase {
 
     @Test
     public void testLogin() throws IOException, ServiceException {
-
+        skipIfNotFixedBugify(1320);
         HttpSession session = app.newSession();
         assertTrue(session.login("administrator", "root"));
         assertTrue(session.isLoggedInAs("administrator"));

@@ -16,6 +16,10 @@ dependencies {
     implementation 'org.hibernate:hibernate-core:5.3.10.Final'
     implementation 'com.thoughtworks.xstream:xstream:1.4.11.1'
     implementation 'biz.futureware.mantis:mantis-axis-soap-client:1.2.19'
+    implementation 'org.apache.httpcomponents:httpclient:4.5.8'
+    implementation 'org.apache.httpcomponents:fluent-hc:4.5.8'
+    implementation 'com.jayway.restassured:rest-assured:2.9.0'
+    implementation 'com.google.code.gson:gson:2.8.5'
 }
 
 test{
