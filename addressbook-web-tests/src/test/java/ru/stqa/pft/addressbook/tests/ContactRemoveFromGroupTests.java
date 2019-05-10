@@ -6,7 +6,6 @@ import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.GroupData;
 import ru.stqa.pft.addressbook.model.Groups;
 
-import static org.hamcrest.MatcherAssert.assertThat;
 import java.io.File;
 
 public class ContactRemoveFromGroupTests extends TestBase {
