@@ -1,9 +1,7 @@
 package ru.stqa.pft.addressbook.tests;
 
 
-import org.hamcrest.CoreMatchers;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.GroupData;
 import ru.stqa.pft.addressbook.model.Groups;
@@ -16,7 +14,7 @@ public class ContactRemoveFromGroupTests extends TestBase {
     @BeforeMethod
     public void ensurePreconditions() {
         if (app.db().groups().size() == 0) {
-            app.goTo().groupPage();
+            app.goTo().groupsPage();
             app.group().create(new GroupData().withName("test123"));
         }
 

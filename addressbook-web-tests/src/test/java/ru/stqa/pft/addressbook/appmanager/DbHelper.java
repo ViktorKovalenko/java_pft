@@ -36,6 +36,16 @@ public class DbHelper {
         session.close();
         return new Contacts(result);
     }
+    public Groups groupsRefreshed(){
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        List<GroupData> result = session.createQuery( "from GroupData" ).list();
+        session.getTransaction().commit();
+        session.close();
+        return new Groups(result);
+    }
+
+
 
 }
 

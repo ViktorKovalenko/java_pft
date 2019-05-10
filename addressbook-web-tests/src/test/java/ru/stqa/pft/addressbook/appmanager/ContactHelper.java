@@ -211,15 +211,20 @@ public class ContactHelper extends HelperBase {
         }
         return contacts;
     }
-    public void deleteContactFromGroup(ContactData contact) {
-        selectContactById(contact.getId());
+    public void deleteContactFromGroup(int contact) {
+        selectContactById(contact);
         wd.findElement(By.name("remove")).click();
     }
 
-    public void addToGroup(ContactData contact, GroupData group) {
-        selectContactById(contact.getId());
+    public void addToGroup(int contact, GroupData group) {
+        selectContactById(contact);
         new Select(wd.findElement(By.name("to_group"))).selectByValue(Integer.toString(group.getId()));
         wd.findElement(By.name("add")).click();
+    }
+
+    public void deleteAllContactsFromGroup(ContactData contact) {
+        wd.findElement(By.id("MassCB")).click();
+        wd.findElement(By.name("remove")).click();
     }
 }
 

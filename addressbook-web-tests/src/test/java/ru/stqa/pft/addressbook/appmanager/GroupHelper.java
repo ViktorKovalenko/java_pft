@@ -102,7 +102,9 @@ public class GroupHelper extends HelperBase {
         }
         return new Groups(groupCashe);
     }
-
+    public void groupPage(){
+        click(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='php-addressbook'])[1]/preceding::a[1]"));
+    }
 
 }
 
