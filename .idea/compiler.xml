@@ -6,6 +6,8 @@
       <module name="addressbook-web-tests.test" target="1.8" />
       <module name="github-sample.main" target="1.8" />
       <module name="github-sample.test" target="1.8" />
+      <module name="java_pft-0a30d4daa541cf7af89b01ca9cbf9c68865c4b0b.addressbook-web-tests.main" target="1.8" />
+      <module name="java_pft-0a30d4daa541cf7af89b01ca9cbf9c68865c4b0b.addressbook-web-tests.test" target="1.8" />
       <module name="mantis-tests.main" target="1.8" />
       <module name="mantis-tests.test" target="1.8" />
       <module name="rest-sample.main" target="1.8" />
