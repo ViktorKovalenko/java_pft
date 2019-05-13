@@ -142,6 +142,9 @@ public class ContactHelper extends HelperBase {
     public boolean isThereAContact() {
         return isElementPresent(By.name("selected[]"));
     }
+    public boolean isThereAContactByid(int id) {
+        return isElementPresent(By.id(String.valueOf(id)));
+    }
 
 
     public int count() {

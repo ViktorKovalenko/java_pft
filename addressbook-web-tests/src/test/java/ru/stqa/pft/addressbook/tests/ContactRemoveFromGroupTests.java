@@ -38,13 +38,13 @@ public class ContactRemoveFromGroupTests extends TestBase {
         String selectedGroup = group.getName();
         app.goTo().homepage();
         app.goTo().insideGroup(selectedGroup);
-        app.contact().deleteAllContactsFromGroup(contact);
-        app.goTo().allContactsPage();
-        app.goTo().insideGroup(selectedGroup);
-
-        if (!app.contact().isThereAContact()) {
+        if (!app.contact().isThereAContactByid(selectedContact)) {
             app.goTo().allContactsPage();
             app.contact().addToGroup(selectedContact, group.withName(selectedGroup));
+
+
+
+
         }
         Groups beforedel = app.db().groupsRefreshed();
         GroupData before = beforedel.iterator().next();
